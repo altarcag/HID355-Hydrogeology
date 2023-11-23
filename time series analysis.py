@@ -11,7 +11,7 @@ print(data.head())
 data.set_index('year', inplace=True)
 
 # Calculate the arithmetic mean
-mean_value = data.mean()
+mean_value = data['precipitation (mm)'].mean()
 
 # Print the result
 def mean():
@@ -23,7 +23,13 @@ def mean():
 mean_res = mean()
 print("arithmetic mean: ", mean_res)
 
+# deviation of precipitation
+pr_dev = data['precipitation (mm)'] - mean_value
+print(pr_dev)
+
 data['precipitation (mm)'].plot.bar(width=0.9)
+
+plt.axhline(mean_res, color='red', linestyle='--', label='Mean')
 
 plt.xlabel("Years", fontsize=15)
 plt.ylabel("P (mm)", fontsize=15)
