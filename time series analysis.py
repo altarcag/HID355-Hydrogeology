@@ -25,11 +25,14 @@ print("arithmetic mean: ", mean_res)
 # deviation of precipitation
 pd.set_option('display.float_format', '{:.2f}'.format)
 pr_dev = data['precipitation (mm)'] - mean_value
-print(pr_dev)
 #cumulative deviation
 cum_dev = np.cumsum(pr_dev)
 
-print(cum_dev)
+# Combine 'year', 'pr_dev', and 'cum_dev' into a DataFrame
+result_df = pd.DataFrame({'Precipitation': data['precipitation (mm)'], 'Deviation from mean': pr_dev.values, 'Cumulative Deviation': cum_dev})
+# Print the DataFrame
+print(result_df)
+
 
 data['precipitation (mm)'].plot.bar(width=0.9)
 
